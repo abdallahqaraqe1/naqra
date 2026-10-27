@@ -39,16 +39,16 @@ func banner(dark: Bool) -> Data {
             let base = NSFont.systemFont(ofSize: size, weight: weight)
             return NSFont(descriptor: base.fontDescriptor.withDesign(.rounded) ?? base.fontDescriptor, size: size) ?? base
         }
-        let name = NSAttributedString(string: "Adawat", attributes: [.font: rounded(132, .bold), .foregroundColor: ink])
+        let name = NSAttributedString(string: "Naqra", attributes: [.font: rounded(132, .bold), .foregroundColor: ink])
         name.draw(at: NSPoint(x: 590, y: 270))
-        let arabic = NSAttributedString(string: "أدوات", attributes: [.font: NSFont(name: arabicBold ?? "GeezaPro-Bold", size: 104) ?? rounded(104, .bold),
+        let arabic = NSAttributedString(string: "نقرة", attributes: [.font: NSFont(name: arabicBold ?? "GeezaPro-Bold", size: 104) ?? rounded(104, .bold),
                                                                       .foregroundColor: accent])
         arabic.draw(at: NSPoint(x: 590 + name.size().width + 44, y: 284))
-        draw("Convert, compress and edit any file while you drag it.", rounded(40, .medium), muted, at: NSPoint(x: 596, y: 200))
-        draw("حوّل واضغط وعدّل أي ملف وأنت تسحبه.", NSFont(name: arabicText ?? "GeezaPro", size: 40) ?? rounded(40, .regular), muted,
-             at: NSPoint(x: 596, y: 134), rtl: true)
-        draw("macOS 14+  ·  Free and open source  ·  Everything stays on your Mac", rounded(26, .regular), accent,
-             at: NSPoint(x: 598, y: 66))
+        draw("Convert, compress and edit any file while you drag it.", rounded(38, .medium), muted, at: NSPoint(x: 596, y: 204))
+        draw("حوّل واضغط وعدّل أي ملف وأنت تسحبه.", NSFont(name: arabicText ?? "GeezaPro", size: 38) ?? rounded(38, .regular), muted,
+             at: NSPoint(x: 596, y: 144), rtl: true)
+        draw("By Eng. Abdallah Qaraqe  ·  Free & Open Source  ·  Mac · Windows · Linux · Android", rounded(24, .medium), accent,
+             at: NSPoint(x: 598, y: 76))
         return true
     }
     let rep = NSBitmapImageRep(cgImage: image.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
