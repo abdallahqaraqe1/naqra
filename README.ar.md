@@ -12,7 +12,7 @@
 
 
 <p align="center">
-  <a href="https://github.com/abdallahqaraqe1/naqra/releases/latest"><img alt="تحميل" src="https://img.shields.io/github/v/release/abdallahqaraqe1/naqra?label=Download&color=5B47E6&style=for-the-badge"></a>
+  <a href="https://github.com/abdallahqaraqe1/naqra/releases/latest"><img alt="تحميل" src="https://img.shields.io/badge/Download-v1.1.0-5B47E6?style=for-the-badge"></a>
   <img alt="macOS 14+" src="https://img.shields.io/badge/macOS-14%2B-111?style=for-the-badge&logo=apple">
   <img alt="Windows 10 و 11" src="https://img.shields.io/badge/Windows-10%20%C2%B7%2011-0078D4?style=for-the-badge&logo=windows11&logoColor=white">
   <img alt="Linux" src="https://img.shields.io/badge/Linux-x64%20%C2%B7%20ARM64-F5A623?style=for-the-badge&logo=linux&logoColor=white">
