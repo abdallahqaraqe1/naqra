@@ -225,7 +225,7 @@ You need Xcode 15.3 or later (or its command line tools), plus `cmake` and `pkgc
 
 ```bash
 git clone https://github.com/abdallahqaraqe1/naqra.git
-cd adawat
+cd naqra
 brew install cmake pkgconf
 scripts/build-ffmpeg.sh            # builds the free, redistributable ffmpeg into build/ffmpeg (takes a few minutes)
 scripts/build-app.sh --install     # builds build/Naqra.app and copies it to /Applications
@@ -246,9 +246,9 @@ windows/tools/build-installer.sh                                # Naqra-Setup-x6
 ```
 
 `build-installer.sh` publishes both versions and compiles `windows/installer/Naqra.iss` with
-[Inno Setup 6](https://jrsoftware.org/isinfo.php) on a Windows machine it reaches over SSH (`ADAWAT_WIN_HOST`).
-`adawat-cli` runs any wheel choice from the command line, for testing: `adawat-cli list photo.jpg`,
-`adawat-cli run image.webp photo.jpg`.
+[Inno Setup 6](https://jrsoftware.org/isinfo.php) on a Windows machine it reaches over SSH (`NAQRA_WIN_HOST`).
+`naqra-cli` runs any wheel choice from the command line, for testing: `naqra-cli list photo.jpg`,
+`naqra-cli run image.webp photo.jpg`.
 
 ### Linux
 
@@ -260,7 +260,7 @@ brew install nfpm squashfs                                     # on a Mac; on Li
 linux/tools/build-packages.sh                                  # .deb, .rpm and AppImage for x64 and ARM64 in linux/build/packages
 ```
 
-`linux/tools/deploy-vm.sh` runs a fresh build in a test machine's desktop session over SSH (host `adawat-linux`), and
+`linux/tools/deploy-vm.sh` runs a fresh build in a test machine's desktop session over SSH (host `naqra-linux`), and
 `linux/tools/snapshots-vm.sh` renders every window there to pictures, in English or Arabic, for checking a build.
 
 ### Android
@@ -273,8 +273,8 @@ android/tools/fetch-native.sh                                  # LAME, libarchiv
 cd android && ./gradlew assembleDebug                          # app/build/outputs/apk/debug/app-debug.apk
 ```
 
-`./gradlew assembleRelease` signs the release APK when the Gradle properties `adawat.storeFile`,
-`adawat.storePassword`, `adawat.keyAlias` and `adawat.keyPassword` are set, for example in `~/.gradle/gradle.properties`.
+`./gradlew assembleRelease` signs the release APK when the Gradle properties `naqra.storeFile`,
+`naqra.storePassword`, `naqra.keyAlias` and `naqra.keyPassword` are set, for example in `~/.gradle/gradle.properties`.
 
 <details>
 <summary>Project layout</summary>
@@ -288,9 +288,9 @@ cd android && ./gradlew assembleDebug                          # app/build/outpu
 | `Sources/Naqra/Float` | The Float shelf |
 | `Resources` | App icon and translations (`ar.lproj`) |
 | `scripts` | Build, ffmpeg, icon, banner, translation and screenshot scripts |
-| `windows/src/Naqra.Core` | Windows: every conversion and tool, shared by the app and `adawat-cli` |
+| `windows/src/Naqra.Core` | Windows: every conversion and tool, shared by the app and `naqra-cli` |
 | `windows/src/Naqra.App` | Windows: tray icon, drag watching, the wheel, Floats and the option windows |
-| `windows/src/Naqra.Cli` | Windows: the `adawat-cli` command line |
+| `windows/src/Naqra.Cli` | Windows: the `naqra-cli` command line |
 | `windows/installer`, `windows/tools` | Windows: the Inno Setup script, ffmpeg and installer scripts |
 | `windows/shared` | Arabic translations for Windows and Linux, generated from `scripts/arabic.py` with the Mac's |
 | `windows/src/Naqra.Core/Platform` | What differs between Windows and Linux in the shared core: OCR, PDF printing, clipboard, RTF |

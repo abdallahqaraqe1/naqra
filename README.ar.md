@@ -258,7 +258,7 @@ Tesseract (عربي وإنجليزي)، والـ PDF بيتطبع بـ WeasyPrin
 
 ```bash
 git clone https://github.com/abdallahqaraqe1/naqra.git
-cd adawat
+cd naqra
 brew install cmake pkgconf
 scripts/build-ffmpeg.sh            # بيبني نسخة ffmpeg الحرة المسموح توزيعها (بياخد كام دقيقة)
 scripts/build-app.sh --install     # بيبني التطبيق وينسخه لمجلد Applications
@@ -285,9 +285,9 @@ windows/tools/build-installer.sh                                # بيعمل Naq
 <div dir="rtl">
 
 السكربت `build-installer.sh` بيجهّز النسختين، وبيبني ملف التثبيت `windows/installer/Naqra.iss` بـ
-[Inno Setup 6](https://jrsoftware.org/isinfo.php) على جهاز ويندوز بيوصله بـ SSH (`ADAWAT_WIN_HOST`).
-وأداة `adawat-cli` بتشغّل أي اختيار من العجلة من سطر الأوامر للتجربة، زي `adawat-cli list photo.jpg`
-و `adawat-cli run image.webp photo.jpg`.
+[Inno Setup 6](https://jrsoftware.org/isinfo.php) على جهاز ويندوز بيوصله بـ SSH (`NAQRA_WIN_HOST`).
+وأداة `naqra-cli` بتشغّل أي اختيار من العجلة من سطر الأوامر للتجربة، زي `naqra-cli list photo.jpg`
+و `naqra-cli run image.webp photo.jpg`.
 
 ### اللينكس
 
@@ -303,7 +303,7 @@ linux/tools/build-packages.sh                                  # ملفات .deb
 
 <div dir="rtl">
 
-السكربت `linux/tools/deploy-vm.sh` بيشغّل آخر نسخة على جهاز تجربة عن طريق SSH (اسمه `adawat-linux`)، و
+السكربت `linux/tools/deploy-vm.sh` بيشغّل آخر نسخة على جهاز تجربة عن طريق SSH (اسمه `naqra-linux`)، و
 `linux/tools/snapshots-vm.sh` بيرسم كل النوافذ هناك صور بالعربي أو الإنجليزي عشان تراجع النسخة.
 
 ### الأندرويد
@@ -320,8 +320,8 @@ cd android && ./gradlew assembleDebug                          # app/build/outpu
 
 <div dir="rtl">
 
-والأمر `./gradlew assembleRelease` بيوقّع نسخة الإصدار لو خصائص Gradle دي موجودة: `adawat.storeFile`
-و `adawat.storePassword` و `adawat.keyAlias` و `adawat.keyPassword`، مثلًا في `~/.gradle/gradle.properties`.
+والأمر `./gradlew assembleRelease` بيوقّع نسخة الإصدار لو خصائص Gradle دي موجودة: `naqra.storeFile`
+و `naqra.storePassword` و `naqra.keyAlias` و `naqra.keyPassword`، مثلًا في `~/.gradle/gradle.properties`.
 
 ## الخصوصية
 
