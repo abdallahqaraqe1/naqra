@@ -320,6 +320,6 @@ The name **Naqra** and its icon identify this project and are not covered by the
 
 
 
-Naqra is an open-source project developed by **Eng. Abdallah Qaraqe**. Follow and contribute to the project on **[GitHub](https://github.com/abdallahqaraqe1/naqra)**. Also by [by-wow.com](https://by-wow.com).
+Naqra is an open-source project developed by **Eng. Abdallah Qaraqe**. Follow and contribute to the project on **[GitHub](https://github.com/abdallahqaraqe1/naqra)**.
 
 Ideas, bugs or translations? [Open an issue](https://github.com/abdallahqaraqe1/naqra/issues).
