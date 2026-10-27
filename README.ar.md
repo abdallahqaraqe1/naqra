@@ -344,9 +344,9 @@ cd android && ./gradlew assembleDebug                          # app/build/outpu
 
 <div dir="rtl">
 
-نقرة مشروع حر ومفتوح المصدر من تطوير **المهندس عبدالله قراقع**. الشروحات والنقرة الجديدة وكواليس الشغل موجودين على
-المستودع متاح على **[GitHub: abdallahqaraqe1/naqra](https://github.com/abdallahqaraqe1/naqra)**.
+نقرة مشروع حر ومفتوح المصدر من تطوير **المهندس عبدالله قراقع**.
+يمكنك متابعة التحديثات والمساهمة في تطوير التطبيق عبر المستودع الرسمي على **[GitHub: abdallahqaraqe1/naqra](https://github.com/abdallahqaraqe1/naqra)**.
 
-عندك فكرة أو مشكلة أو ترجمة؟ [افتح Issue](https://github.com/abdallahqaraqe1/naqra/issues).
+عندك فكرة أو مشكلة أو اقتراح؟ [افتح Issue](https://github.com/abdallahqaraqe1/naqra/issues).
 
 </div>
