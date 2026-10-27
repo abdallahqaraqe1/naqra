@@ -1,0 +1,4 @@
+#!/bin/sh
+# The AppImage's entry point: Naqra lives in usr/lib/naqra with its ffmpeg in tools/.
+HERE="$(dirname "$(readlink -f "$0")")"
+exec "$HERE/usr/lib/naqra/naqra" "$@"

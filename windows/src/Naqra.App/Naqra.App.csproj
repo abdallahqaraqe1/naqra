@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- The tray app: drag watching, the wheel, the Float and every tool window. -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>false</UseWindowsForms>
+    <AssemblyName>Naqra</AssemblyName>
+    <RootNamespace>Naqra.App</RootNamespace>
+    <ApplicationIcon>..\..\assets\Naqra.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Naqra.Core\Naqra.Core.csproj" />
+    <PackageReference Include="H.NotifyIcon.Wpf" Version="2.4.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\..\assets\Naqra.ico" Link="Assets\Naqra.ico" />
+    <Resource Include="..\..\assets\AppIcon-256.png" Link="Assets\AppIcon-256.png" />
+  </ItemGroup>
+</Project>

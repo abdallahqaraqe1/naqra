@@ -1,0 +1,79 @@
+# Naqra for Linux as .deb and .rpm, built by tools/build-packages.sh with nfpm. ARCH, VERSION and PUBLISH come from it.
+name: naqra
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+section: utils
+priority: optional
+maintainer: Abdallah Qaraqe <abdallahqaraqe1@github.com>
+description: |
+  Convert, compress and edit any file while you drag it.
+  Drag files, press Shift, Ctrl or Alt, and a wheel of choices opens under the pointer: a new format, a smaller
+  file or an edited copy. Everything happens on this computer. In Arabic and English.
+vendor: Abdallah Qaraqe
+homepage: https://github.com/abdallahqaraqe1/naqra
+license: GPL-3.0-or-later
+contents:
+  - src: ${PUBLISH}/
+    dst: /usr/lib/naqra
+    type: tree
+  - src: /usr/lib/naqra/naqra
+    dst: /usr/bin/naqra
+    type: symlink
+  - src: /usr/lib/naqra/naqra-cli
+    dst: /usr/bin/naqra-cli
+    type: symlink
+  - src: packaging/naqra.desktop
+    dst: /usr/share/applications/naqra.desktop
+  - src: assets/icons/naqra-256.png
+    dst: /usr/share/icons/hicolor/256x256/apps/naqra.png
+  - src: assets/icons/naqra-64.png
+    dst: /usr/share/icons/hicolor/64x64/apps/naqra.png
+  - src: gnome-extension/naqra@abdallahqaraqe1.github.io/
+    dst: /usr/share/gnome-shell/extensions/naqra@abdallahqaraqe1.github.io
+    type: tree
+overrides:
+  deb:
+    depends:
+      - ffmpeg
+      - libx11-6
+      - libxext6
+      - libxfixes3
+      - libxi6
+      - libxrandr2
+      - libxcursor1
+      - libice6
+      - libsm6
+      - libfontconfig1
+    recommends:
+      - tesseract-ocr
+      - tesseract-ocr-ara
+      - weasyprint
+      - libreoffice-writer
+      - libreoffice-calc
+      - libreoffice-impress
+      - wl-clipboard | xclip
+      - gnome-shell-extension-appindicator | ubuntu-desktop-minimal
+    suggests:
+      - kdeconnect
+  rpm:
+    depends:
+      - /usr/bin/ffmpeg
+      - libX11
+      - libXext
+      - libXfixes
+      - libXi
+      - libXrandr
+      - libXcursor
+      - libICE
+      - libSM
+      - fontconfig
+    recommends:
+      - tesseract
+      - tesseract-langpack-ara
+      - weasyprint
+      - libreoffice-writer
+      - libreoffice-calc
+      - libreoffice-impress
+      - wl-clipboard
+      - gnome-shell-extension-appindicator

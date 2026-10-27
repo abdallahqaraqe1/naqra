@@ -1,0 +1,8 @@
+{
+  "uuid": "naqra@abdallahqaraqe1.github.io",
+  "name": "Naqra",
+  "description": "Lets Naqra open its wheel while you drag files on GNOME under Wayland: it tells the Naqra app when Shift, Ctrl or Alt is pressed during a drag, and where the pointer is. Nothing else is read or sent anywhere.",
+  "shell-version": ["45", "46", "47", "48", "49"],
+  "url": "https://github.com/abdallahqaraqe1/naqra",
+  "version": 1
+}

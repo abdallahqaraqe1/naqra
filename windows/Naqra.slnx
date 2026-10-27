@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/Naqra.Core/Naqra.Core.csproj" />
+  <Project Path="src/Naqra.App/Naqra.App.csproj" />
+  <Project Path="src/Naqra.Cli/Naqra.Cli.csproj" />
+</Solution>
