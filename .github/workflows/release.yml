@@ -2,22 +2,15 @@ name: Build and Publish Naqra Release
 
 on:
   workflow_dispatch:
-    inputs:
-      rebuild_all:
-        description: 'Rebuild Windows and Linux too'
-        required: false
-        default: 'true'
   push:
     tags:
       - 'v*'
 
 permissions:
   contents: write
-  actions: read
 
 jobs:
   build-windows:
-    if: github.event_name == 'workflow_dispatch'
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -75,7 +68,6 @@ jobs:
           path: windows/build/installer/Naqra-Setup-*.exe
 
   build-linux:
-    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -110,7 +102,6 @@ jobs:
             linux/build/packages/*.AppImage
 
   build-android:
-    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -149,7 +140,6 @@ jobs:
           path: Naqra-Android.apk
 
   build-macos:
-    if: github.event_name == 'workflow_dispatch'
     runs-on: macos-15
     steps:
       - name: Checkout repository
@@ -171,32 +161,32 @@ jobs:
             build/Naqra-1.1.0.dmg
 
   publish-release:
-    if: always()
     needs: [build-windows, build-linux, build-android, build-macos]
     runs-on: ubuntu-latest
     steps:
+      - name: Download all built artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+          merge-multiple: true
+
       - name: Upload all updated assets and SHA-256 checksums to v1.1.0 GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          mkdir -p release-assets
-          gh run download 41133095082 -n windows-packages -n linux-packages -D release-assets --repo "${{ github.repository }}"
-          gh run download 41134232264 -n android-package -D release-assets --repo "${{ github.repository }}"
-          gh run download 41134984612 -n macos-packages -D release-assets --repo "${{ github.repository }}"
-          find release-assets -mindepth 2 -type f -exec mv -f {} release-assets/ \;
-          find release-assets -mindepth 1 -type d -delete
           ls -lh release-assets/
-          gh release upload v1.1.0 release-assets/* --clobber --repo "${{ github.repository }}"
+          TAG_NAME="${GITHUB_REF_NAME:-v1.1.0}"
+          gh release upload "$TAG_NAME" release-assets/* --clobber --repo "${{ github.repository }}"
           cd release-assets
           SUMS=$(shasum -a 256 Naqra.dmg Naqra-Setup-x64.exe Naqra-Setup-arm64.exe Naqra-linux-amd64.deb Naqra-linux-arm64.deb Naqra-linux-x86_64.rpm Naqra-linux-aarch64.rpm Naqra-x86_64.AppImage Naqra-aarch64.AppImage Naqra-Android.apk)
           echo "$SUMS"
           python3 -c '
           import subprocess, sys, re
-          sums = sys.argv[1].strip()
-          body = subprocess.check_output(["gh", "release", "view", "v1.1.0", "--repo", "${{ github.repository }}", "--json", "body", "-q", ".body"], text=True)
+          sums, tag = sys.argv[1].strip(), sys.argv[2]
+          body = subprocess.check_output(["gh", "release", "view", tag, "--repo", "${{ github.repository }}", "--json", "body", "-q", ".body"], text=True)
           new_body = re.sub(r"(### SHA-256 Checksums\s+```\n).*?(\n```)", r"\g<1>" + sums + r"\g<2>", body, flags=re.S)
           with open("/tmp/release-body.md", "w", encoding="utf-8") as f:
               f.write(new_body)
-          subprocess.run(["gh", "release", "edit", "v1.1.0", "--repo", "${{ github.repository }}", "--notes-file", "/tmp/release-body.md"], check=True)
-          ' "$SUMS"
+          subprocess.run(["gh", "release", "edit", tag, "--repo", "${{ github.repository }}", "--notes-file", "/tmp/release-body.md"], check=True)
+          ' "$SUMS" "$TAG_NAME"
