@@ -1,7 +1,7 @@
 #!/bin/bash
 # Fetches the C libraries the app builds with the NDK, each pinned by its SHA-256:
-#   LAME 3.100 (LGPL 2.0)          the MP3 encoder, in libadawat-mp3.so
-#   libarchive 3.8.9 (BSD 2-Clause) archive reading and writing, in libadawat-archive.so
+#   LAME 3.100 (LGPL 2.0)          the MP3 encoder, in libnaqra-mp3.so
+#   libarchive 3.8.9 (BSD 2-Clause) archive reading and writing, in libnaqra-archive.so
 #   xz 5.8.4 (0BSD)                 LZMA and XZ for libarchive (7-Zip, .xz)
 #   bzip2 1.0.8 (BSD-style)         bzip2 for libarchive
 set -euo pipefail

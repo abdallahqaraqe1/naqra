@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Builds the ffmpeg that ships inside Adawat.app from the official sources: one static binary for this Mac,
+# Builds the ffmpeg that ships inside Naqra.app from the official sources: one static binary for this Mac,
 # GPL v3, with only free libraries, so the app can be shared legally. The exact versions are pinned below;
 # together with this script they are the corresponding source the GPL asks for.
 #

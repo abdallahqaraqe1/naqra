@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Packs the Mac app icon into windows/assets/Adawat.ico (PNG entries, 16 to 256 px) and AppIcon-256.png.
+"""Packs the Mac app icon into windows/assets/Naqra.ico (PNG entries, 16 to 256 px) and AppIcon-256.png.
 Uses macOS `sips` for resizing. Run from the repository root: python3 windows/tools/make-ico.py"""
 import pathlib, struct, subprocess, tempfile
 
@@ -21,5 +21,5 @@ entries, data = b"", b""
 for size, png in zip(sizes, images):
     entries += struct.pack("<BBBBHHII", size % 256, size % 256, 0, 0, 1, 32, len(png), offset + len(data))
     data += png
-(assets / "Adawat.ico").write_bytes(header + entries + data)
-print(assets / "Adawat.ico")
+(assets / "Naqra.ico").write_bytes(header + entries + data)
+print(assets / "Naqra.ico")

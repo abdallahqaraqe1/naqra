@@ -1,4 +1,4 @@
-﻿; Naqra for Windows: a per-user installer (no administrator rights), in Arabic or English.
+; Naqra for Windows: a per-user installer (no administrator rights), in Arabic or English.
 ; Built by windows/tools/build-installer.sh, which publishes the app and passes:
 ;   /DArch=arm64|x64  /DSource=<published folder>  /DAppVersion=1.0.0
 
@@ -13,7 +13,7 @@
 #endif
 
 [Setup]
-AppId={{1243CFE4-04B5-4D94-80A5-58DAE3617C98}
+AppId={{8F6A9C31-5E2B-4D7A-9C14-7B3E8A42D905}
 AppName=Naqra
 AppVersion={#AppVersion}
 AppVerName=Naqra {#AppVersion}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Arabic translations for Adawat. Writes Resources/ar.lproj/Localizable.strings (exact text) and
+"""Arabic translations for Naqra. Writes Resources/ar.lproj/Localizable.strings (exact text) and
 Patterns.strings (text with values: {1}, {2}… in both languages mark the values).
 
 usage: arabic.py
@@ -9,38 +9,38 @@ import re
 
 STATIC = {
     # Wheel modes and general
-    "Convert": "تحويل", "Tools": "أدوات", "Actions": "إجراءات", "Convert wheel": "عجلة التحويل",
-    "Tools wheel": "عجلة الأدوات", "Actions wheel": "عجلة الإجراءات", "NO OPTIONS": "لا خيارات",
+    "Convert": "تحويل", "Tools": "نقرة", "Actions": "إجراءات", "Convert wheel": "عجلة التحويل",
+    "Tools wheel": "عجلة النقرة", "Actions wheel": "عجلة الإجراءات", "NO OPTIONS": "لا خيارات",
     "Apply": "تطبيق", "Back": "رجوع", "Continue": "متابعة", "Close": "إغلاق", "Reset": "إعادة ضبط",
     "Save": "حفظ", "Set": "تعيين", "Stop": "إيقاف", "Play": "تشغيل", "Open": "فتح", "Preview": "معاينة",
     "Original": "الأصل", "Edited": "معدّل", "Restore Defaults": "استعادة الافتراضي", "Get Started": "ابدأ",
-    "Untitled": "بدون عنوان", "Adawat": "أدوات",
+    "Untitled": "بدون عنوان", "Naqra": "نقرة",
     # Menu bar and settings
     "New Float": "Float جديد", "Close All Floats": "إغلاق كل الـ Floats", "Welcome Guide…": "دليل البداية…",
-    "Settings…": "الإعدادات…", "Quit Adawat": "إنهاء أدوات", "Adawat Settings": "إعدادات تطبيق أدوات",
-    "Adawat — drag files, then press a modifier key": "أدوات — اسحب الملفات ثم اضغط مفتاحًا",
+    "Settings…": "الإعدادات…", "Quit Naqra": "إنهاء نقرة", "Naqra Settings": "إعدادات تطبيق نقرة",
+    "Naqra — drag files, then press a modifier key": "نقرة — اسحب الملفات ثم اضغط مفتاحًا",
     "Shortcuts while dragging": "الاختصارات أثناء السحب",
     "Drag files anywhere, then press the key to open its wheel right away.": "اسحب الملفات من أي مكان، ثم اضغط المفتاح لتظهر عجلته فورًا.",
     "Results": "النتائج", "Save results": "حفظ النتائج", "Next to the original": "بجانب الملف الأصلي",
     "Downloads folder": "مجلد التنزيلات", "Desktop": "سطح المكتب", "Show results in a Float": "عرض النتائج في Float",
     "Sound and haptic feedback": "الصوت والاهتزاز", "Compression": "الضغط", "Default preset": "الإعداد الافتراضي",
     "Resize longest edge": "أطول ضلع عند التصغير", "Video": "الفيديو", "Quality": "الجودة", "High quality": "جودة عالية",
-    "Smallest file": "أصغر حجم", "General": "عام", "Launch Adawat at login": "تشغيل أدوات عند تسجيل الدخول",
+    "Smallest file": "أصغر حجم", "General": "عام", "Launch Naqra at login": "تشغيل نقرة عند تسجيل الدخول",
     "Not found — brew install ffmpeg": "غير موجود — brew install ffmpeg", "Language": "اللغة",
     "Option": "Option", "Control": "Control", "Shift": "Shift", "Command": "Command", "Fn": "Fn",
     # Welcome
-    "Welcome to Adawat": "أهلًا بك في أدوات",
+    "Welcome to Naqra": "أهلًا بك في نقرة",
     "Convert, compress and edit any file while you drag it. Everything stays on your Mac.": "حوّل واضغط وعدّل أي ملف وأنت تسحبه. كل شيء يتم على جهازك.",
     "Try it now": "جرّبها الآن", "Step 1. Drag the photo.": "الخطوة 1: اسحب الصورة.",
     "Step 2. While dragging, press a key.": "الخطوة 2: أثناء السحب، اضغط مفتاحًا.", "Drag this file": "اسحب هذا الملف",
     "That's it. Drop the photo on a format to convert it.": "هذا كل شيء. أفلت الصورة على صيغة لتحويلها.",
     "The wheel stays open until you drop.": "تبقى العجلة مفتوحة حتى تُفلت الملف.", "Make it yours": "خصّصه لك",
-    "Adawat restarts to change the language.": "يُعاد تشغيل التطبيق لتغيير اللغة.", "Restart Now": "أعد التشغيل الآن",
-    "Open Adawat when you log in": "افتح أدوات عند تسجيل الدخول",
-    "Adawat lives in your menu bar, so it is ready whenever you drag a file.": "تطبيق أدوات يعيش في شريط القوائم، فهو جاهز كلما سحبت ملفًا.",
+    "Naqra restarts to change the language.": "يُعاد تشغيل التطبيق لتغيير اللغة.", "Restart Now": "أعد التشغيل الآن",
+    "Open Naqra when you log in": "افتح نقرة عند تسجيل الدخول",
+    "Naqra lives in your menu bar, so it is ready whenever you drag a file.": "تطبيق نقرة يعيش في شريط القوائم، فهو جاهز كلما سحبت ملفًا.",
     "You're all set": "كل شيء جاهز",
-    "Find the Adawat icon near the clock in your menu bar for Floats, Settings and this guide.": "ستجد أيقونة أدوات بجانب الساعة في شريط القوائم، ومنها الـ Floats والإعدادات وهذا الدليل.",
-    "Allow Adawat in macOS Login Items to finish setup.": "اسمح لتطبيق أدوات في عناصر الدخول بالنظام لإكمال الإعداد.",
+    "Find the Naqra icon near the clock in your menu bar for Floats, Settings and this guide.": "ستجد أيقونة نقرة بجانب الساعة في شريط القوائم، ومنها الـ Floats والإعدادات وهذا الدليل.",
+    "Allow Naqra in macOS Login Items to finish setup.": "اسمح لتطبيق نقرة في عناصر الدخول بالنظام لإكمال الإعداد.",
     # Float
     "Float": "Float", "Drop files here": "أفلت الملفات هنا", "Drag to carry all files": "اسحب لنقل كل الملفات",
     "Drag to carry the selection": "اسحب لنقل المحدد", "Share with AirDrop": "مشاركة عبر AirDrop",
@@ -212,7 +212,7 @@ STATIC = {
 # Text with values. {1}, {2}… are the values, in order of appearance in the English.
 DYNAMIC = {
     "Adding background {1} of {2}": "جارٍ إضافة الخلفية {1} من {2}",
-    "Allow Adawat to control {1} in System Settings › Privacy & Security › Automation.": "اسمح لتطبيق أدوات بالتحكم في {1} من إعدادات النظام › الخصوصية والأمان › الأتمتة.",
+    "Allow Naqra to control {1} in System Settings › Privacy & Security › Automation.": "اسمح لتطبيق نقرة بالتحكم في {1} من إعدادات النظام › الخصوصية والأمان › الأتمتة.",
     "Audio keeps its pitch. The new length is {1}.": "يحتفظ الصوت بطبقته. المدة الجديدة {1}.",
     "Box {1}": "مربع {1}", "Building slide {1} of {2}": "جارٍ بناء الشريحة {1} من {2}",
     "Compressed PDF · {1}% smaller": "ضُغط PDF · أصغر بنسبة {1}%", "Compressed {1}": "ضُغط {1}",
@@ -275,14 +275,14 @@ WINDOWS_STATIC = {
     "Ctrl": "Ctrl", "Alt": "Alt", "Windows": "Windows", "File Explorer": "مستكشف الملفات",
     "Show in File Explorer": "إظهار في مستكشف الملفات", "Shown in File Explorer": "ظهر في مستكشف الملفات",
     "Share": "مشاركة", "Sharing": "جارٍ المشاركة", "Open in Terminal": "فتح في Terminal",
-    "Start Adawat when Windows starts": "تشغيل أدوات مع بدء Windows",
-    "Adawat lives next to the clock, so it is ready whenever you drag a file.": "تطبيق أدوات يعيش بجانب الساعة، فهو جاهز كلما سحبت ملفًا.",
-    "Find the Adawat icon next to the clock for Floats, Settings and this guide.": "ستجد أيقونة أدوات بجانب الساعة، ومنها الـ Floats والإعدادات وهذا الدليل.",
+    "Start Naqra when Windows starts": "تشغيل نقرة مع بدء Windows",
+    "Naqra lives next to the clock, so it is ready whenever you drag a file.": "تطبيق نقرة يعيش بجانب الساعة، فهو جاهز كلما سحبت ملفًا.",
+    "Find the Naqra icon next to the clock for Floats, Settings and this guide.": "ستجد أيقونة نقرة بجانب الساعة، ومنها الـ Floats والإعدادات وهذا الدليل.",
     "Microsoft Word is needed for this file.": "يلزم Microsoft Word لهذا الملف.",
     "Microsoft PowerPoint is needed for this file.": "يلزم Microsoft PowerPoint لهذا الملف.",
     "Microsoft Excel is needed for this file.": "يلزم Microsoft Excel لهذا الملف.",
     "Pages, Keynote and Numbers files are not supported on Windows.": "ملفات Pages و Keynote و Numbers غير مدعومة على Windows.",
-    "Exit": "خروج", "Exit Adawat": "إنهاء أدوات",
+    "Exit": "خروج", "Exit Naqra": "إنهاء نقرة",
     "Convert, compress and edit any file while you drag it. Everything stays on your PC.": "حوّل واضغط وعدّل أي ملف وأنت تسحبه. كل شيء يتم على جهازك.",
     "Something went wrong: ": "حدث خطأ: ", "Create QR Code…": "إنشاء رمز QR…",
     "Move up": "تحريك لأعلى", "Move down": "تحريك لأسفل", "Fewer": "أقل", "More": "أكثر",
@@ -296,16 +296,16 @@ WINDOWS_DYNAMIC = {
 # Text only the Linux app shows (it reads the same JSON as the Windows app).
 LINUX_STATIC = {
     "Convert, compress and edit any file while you drag it. Everything stays on your computer.": "حوّل واضغط وعدّل أي ملف وأنت تسحبه. كل شيء يتم على جهازك.",
-    "Start Adawat when you sign in": "تشغيل أدوات عند تسجيل الدخول",
-    "Adawat lives in the top bar, so it is ready whenever you drag a file.": "تطبيق أدوات يعيش في الشريط العلوي، فهو جاهز كلما سحبت ملفًا.",
-    "Find the Adawat icon in the top bar for Floats, Settings and this guide.": "ستجد أيقونة أدوات في الشريط العلوي، ومنها الـ Floats والإعدادات وهذا الدليل.",
-    "Sign out and back in once so GNOME loads the Adawat extension. Until then, right-click files and choose Open with Adawat.":
-        "سجّل الخروج ثم الدخول مرة واحدة ليحمّل GNOME إضافة أدوات. حتى ذلك الحين، انقر الملفات بالزر الأيمن واختر «فتح بأدوات».",
-    "The Adawat extension for GNOME is missing. Right-click files and choose Open with Adawat to open the wheel.":
-        "إضافة أدوات لـ GNOME غير موجودة. انقر الملفات بالزر الأيمن واختر «فتح بأدوات» لتظهر العجلة.",
-    "On this desktop the wheel opens from the file manager: right-click files and choose Open with Adawat.":
-        "على سطح المكتب هذا تظهر العجلة من مدير الملفات: انقر الملفات بالزر الأيمن واختر «فتح بأدوات».",
-    "Open with Adawat": "فتح بأدوات", "Show in Files": "إظهار في الملفات", "Float": "Float", "Search": "بحث",
+    "Start Naqra when you sign in": "تشغيل نقرة عند تسجيل الدخول",
+    "Naqra lives in the top bar, so it is ready whenever you drag a file.": "تطبيق نقرة يعيش في الشريط العلوي، فهو جاهز كلما سحبت ملفًا.",
+    "Find the Naqra icon in the top bar for Floats, Settings and this guide.": "ستجد أيقونة نقرة في الشريط العلوي، ومنها الـ Floats والإعدادات وهذا الدليل.",
+    "Sign out and back in once so GNOME loads the Naqra extension. Until then, right-click files and choose Open with Naqra.":
+        "سجّل الخروج ثم الدخول مرة واحدة ليحمّل GNOME إضافة نقرة. حتى ذلك الحين، انقر الملفات بالزر الأيمن واختر «فتح بنقرة».",
+    "The Naqra extension for GNOME is missing. Right-click files and choose Open with Naqra to open the wheel.":
+        "إضافة نقرة لـ GNOME غير موجودة. انقر الملفات بالزر الأيمن واختر «فتح بنقرة» لتظهر العجلة.",
+    "On this desktop the wheel opens from the file manager: right-click files and choose Open with Naqra.":
+        "على سطح المكتب هذا تظهر العجلة من مدير الملفات: انقر الملفات بالزر الأيمن واختر «فتح بنقرة».",
+    "Open with Naqra": "فتح بنقرة", "Show in Files": "إظهار في الملفات", "Float": "Float", "Search": "بحث",
     "Choose an image": "اختر صورة", "Cancel": "إلغاء", "Copy": "نسخ", "Email": "بريد إلكتروني", "Attach to a new message": "إرفاق برسالة جديدة",
     "Bluetooth": "Bluetooth", "Send to a nearby device": "إرسال إلى جهاز قريب", "KDE Connect": "KDE Connect",
     "Send to your phone": "إرسال إلى هاتفك", "Paste the files in any app": "ألصق الملفات في أي تطبيق",
@@ -347,7 +347,7 @@ def main():
     patterns = "".join(f'"{escape(regex(k))}" = "{escape(template(v))}";\n' for k, v in sorted(DYNAMIC.items()))
     (root / "Patterns.strings").write_text(patterns, encoding="utf-8")
     # The app's own name in Finder, the Dock and Launchpad.
-    (root / "InfoPlist.strings").write_text('"CFBundleDisplayName" = "أدوات";\n"CFBundleName" = "أدوات";\n', encoding="utf-8")
+    (root / "InfoPlist.strings").write_text('"CFBundleDisplayName" = "نقرة";\n"CFBundleName" = "نقرة";\n', encoding="utf-8")
     # The Windows and Linux apps read the same translations as JSON; {1}, {2}… stay as written.
     import json
     shared = root.parent.parent / "windows" / "shared"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Localization helper for Adawat's Swift sources.
+"""Localization helper for Naqra's Swift sources.
 
   localize.py wrap      Wraps the first string literal of UI calls (Text, Button, Toggle, help…) in L10n.t(…).
   localize.py extract   Lists every user-facing English string as JSON: {"static": [...], "dynamic": [...]}.
@@ -11,7 +11,7 @@ import pathlib
 import re
 import sys
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent / "Sources" / "Adawat"
+ROOT = pathlib.Path(__file__).resolve().parent.parent / "Sources" / "Naqra"
 
 # Calls whose first argument is visible text.
 CALLS = [

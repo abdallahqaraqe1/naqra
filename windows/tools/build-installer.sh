@@ -2,11 +2,11 @@
 # Builds Naqra-Setup-<arch>.exe for Windows ARM64 and x64.
 #   windows/tools/build-installer.sh [arm64] [x64]      (default: both)
 # The app is published here with the .NET SDK; the installer is compiled by Inno Setup 6 on a Windows machine reached
-# over SSH (ADAWAT_WIN_HOST, default "naqra-win"), and the finished setups come back to windows/build/installer.
+# over SSH (NAQRA_WIN_HOST, default "naqra-win"), and the finished setups come back to windows/build/installer.
 set -e
 cd "$(dirname "$0")/.."
 export PATH="$HOME/.dotnet:$PATH" DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
-HOST=${ADAWAT_WIN_HOST:-naqra-win}
+HOST=${NAQRA_WIN_HOST:-naqra-win}
 ARCHES=("$@"); (( $#ARCHES )) || ARCHES=(arm64 x64)
 VERSION=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' Directory.Build.props)
 REMOTE='C:\Naqra\pkg'

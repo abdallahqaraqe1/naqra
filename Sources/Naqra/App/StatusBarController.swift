@@ -15,29 +15,37 @@ final class StatusBarController: NSObject, NSMenuDelegate {
         item.menu = menu
     }
 
-    /// The app icon's citrus slice as a template: a rind, eight segment lines and a hub.
-    /// A template version of the app icon: six petals around a hub, the top-right one lifted.
+    /// A template version of the Naqra app icon: a cursor arrow with click ripples and radial wheel arc.
     static let menuBarIcon: NSImage = {
-        let image = NSImage(size: NSSize(width: 18, height: 18), flipped: false) { rect in
-            let center = NSPoint(x: rect.midX, y: rect.midY)
+        let image = NSImage(size: NSSize(width: 18, height: 18), flipped: true) { rect in
+            NSColor.black.setStroke()
             NSColor.black.setFill()
-            let inner: CGFloat = 3.0, outer: CGFloat = 8.2, gap: CGFloat = 0.75
-            for index in 0..<6 {
-                let step = CGFloat.pi / 3
-                let mid = CGFloat.pi / 2 - step / 2 - CGFloat(index) * step
-                let lift: CGFloat = index == 0 ? 0.9 : 0
-                let c = NSPoint(x: center.x + cos(mid) * lift, y: center.y + sin(mid) * lift)
-                let r = outer - (index == 0 ? 0.9 : 0)
-                let a0 = mid - step / 2, a1 = mid + step / 2
-                let path = NSBezierPath()
-                path.appendArc(withCenter: c, radius: r, startAngle: (a0 + asin(gap / r)) * 180 / .pi,
-                               endAngle: (a1 - asin(gap / r)) * 180 / .pi)
-                path.appendArc(withCenter: c, radius: inner, startAngle: (a1 - asin(gap / inner)) * 180 / .pi,
-                               endAngle: (a0 + asin(gap / inner)) * 180 / .pi, clockwise: true)
-                path.close()
-                path.fill()
-            }
-            NSBezierPath(ovalIn: NSRect(x: center.x - 1.5, y: center.y - 1.5, width: 3, height: 3)).fill()
+
+            // Outer radial wheel arc
+            let wheelArc = NSBezierPath()
+            wheelArc.appendArc(withCenter: NSPoint(x: 9.2, y: 9.2), radius: 6.8, startAngle: -92, endAngle: 150, clockwise: false)
+            wheelArc.lineWidth = 1.65
+            wheelArc.lineCapStyle = .round
+            wheelArc.stroke()
+
+            // Click ripple arc around the cursor tip
+            let ripple = NSBezierPath()
+            ripple.appendArc(withCenter: NSPoint(x: 7.0, y: 6.4), radius: 2.6, startAngle: 135, endAngle: 325, clockwise: false)
+            ripple.lineWidth = 1.25
+            ripple.lineCapStyle = .round
+            ripple.stroke()
+
+            // Cursor arrow
+            let cursor = NSBezierPath()
+            cursor.move(to: NSPoint(x: 6.8, y: 5.8))
+            cursor.line(to: NSPoint(x: 8.2, y: 14.0))
+            cursor.line(to: NSPoint(x: 10.1, y: 12.1))
+            cursor.line(to: NSPoint(x: 12.1, y: 15.1))
+            cursor.line(to: NSPoint(x: 13.6, y: 14.1))
+            cursor.line(to: NSPoint(x: 11.6, y: 11.1))
+            cursor.line(to: NSPoint(x: 14.1, y: 10.0))
+            cursor.close()
+            cursor.fill()
             return true
         }
         image.isTemplate = true

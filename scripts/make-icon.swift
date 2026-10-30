@@ -1,5 +1,5 @@
-// Draws Adawat's app icon: a white wheel of six tool petals on a violet squircle, one petal lifted in mint
-// as the chosen tool. Run: swift scripts/make-icon.swift <out.png>
+// Draws Naqra's app icon: a glowing cursor arrow with concentric click ripples and radial action arc on a violet squircle.
+// Run: swift scripts/make-icon.swift <out.png>
 import AppKit
 
 let size: CGFloat = 1024
