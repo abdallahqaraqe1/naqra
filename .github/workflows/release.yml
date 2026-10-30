@@ -149,6 +149,7 @@ jobs:
           path: Naqra-Android.apk
 
   build-macos:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: macos-15
     steps:
       - name: Checkout repository
@@ -170,28 +171,21 @@ jobs:
             build/Naqra-1.1.0.dmg
 
   publish-release:
-    if: always() && needs.build-macos.result == 'success'
+    if: always()
     needs: [build-windows, build-linux, build-android, build-macos]
     runs-on: ubuntu-latest
     steps:
-      - name: Download current run artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: release-assets
-          merge-multiple: true
-
       - name: Upload all updated assets and SHA-256 checksums to v1.1.0 GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          if [ ! -f release-assets/Naqra-Setup-x64.exe ]; then
-            gh run download 41133095082 -n windows-packages -n linux-packages -D release-assets --repo "${{ github.repository }}"
-          fi
-          if [ ! -f release-assets/Naqra-Android.apk ]; then
-            gh run watch 41134232264 --repo "${{ github.repository }}" || true
-            gh run download 41134232264 -n android-package -D release-assets --repo "${{ github.repository }}"
-          fi
+          mkdir -p release-assets
+          gh run download 41133095082 -n windows-packages -n linux-packages -D release-assets --repo "${{ github.repository }}"
+          gh run download 41134232264 -n android-package -D release-assets --repo "${{ github.repository }}"
+          gh run download 41134984612 -n macos-packages -D release-assets --repo "${{ github.repository }}"
+          find release-assets -mindepth 2 -type f -exec mv -f {} release-assets/ \;
+          find release-assets -mindepth 1 -type d -delete
           ls -lh release-assets/
           gh release upload v1.1.0 release-assets/* --clobber --repo "${{ github.repository }}"
           cd release-assets
