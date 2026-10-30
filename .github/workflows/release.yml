@@ -110,6 +110,7 @@ jobs:
             linux/build/packages/*.AppImage
 
   build-android:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -169,7 +170,7 @@ jobs:
             build/Naqra-1.1.0.dmg
 
   publish-release:
-    if: always() && needs.build-android.result == 'success' && needs.build-macos.result == 'success'
+    if: always() && needs.build-macos.result == 'success'
     needs: [build-windows, build-linux, build-android, build-macos]
     runs-on: ubuntu-latest
     steps:
@@ -186,6 +187,10 @@ jobs:
           set -euo pipefail
           if [ ! -f release-assets/Naqra-Setup-x64.exe ]; then
             gh run download 41133095082 -n windows-packages -n linux-packages -D release-assets --repo "${{ github.repository }}"
+          fi
+          if [ ! -f release-assets/Naqra-Android.apk ]; then
+            gh run watch 41134232264 --repo "${{ github.repository }}" || true
+            gh run download 41134232264 -n android-package -D release-assets --repo "${{ github.repository }}"
           fi
           ls -lh release-assets/
           gh release upload v1.1.0 release-assets/* --clobber --repo "${{ github.repository }}"
