@@ -16,8 +16,13 @@ for arg in "$@"; do
   esac
 done
 
-swift build -c release
-BIN="$(swift build -c release --show-bin-path)/Naqra"
+if [[ "${UNIVERSAL:-true}" == "true" ]]; then
+  swift build -c release --arch arm64 --arch x86_64
+  BIN="$(swift build -c release --arch arm64 --arch x86_64 --show-bin-path)/Naqra"
+else
+  swift build -c release
+  BIN="$(swift build -c release --show-bin-path)/Naqra"
+fi
 
 APP="build/Naqra.app"
 rm -rf "$APP"

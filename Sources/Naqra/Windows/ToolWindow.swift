@@ -38,7 +38,7 @@ enum ToolWindows {
         window.titleVisibility = .hidden
         window.title = title
         [.closeButton, .miniaturizeButton, .zoomButton].forEach { window.standardWindowButton($0)?.isHidden = true }
-        window.isMovableByWindowBackground = true
+        window.isMovableByWindowBackground = false
         window.backgroundColor = NSColor(white: 0.975, alpha: 1)
         window.appearance = NSAppearance(named: .aqua)
         window.level = .floating
@@ -97,6 +97,7 @@ struct ToolScaffold<Content: View, Leading: View, Trailing: View>: View {
             }
             .padding(.horizontal, 12)
             .frame(height: 44)
+            .background(WindowDragRegion())
             Divider()
             content
                 .padding(16)
@@ -111,6 +112,19 @@ struct ToolScaffold<Content: View, Leading: View, Trailing: View>: View {
             .frame(height: 52)
         }
         .foregroundStyle(Theme.ink)
+    }
+}
+
+/// Allows dragging the window only from its header bar, keeping interactive canvases stationary.
+private struct WindowDragRegion: NSViewRepresentable {
+    func makeNSView(context: Context) -> NSView { DraggableHeaderView() }
+    func updateNSView(_ nsView: NSView, context: Context) {}
+
+    private final class DraggableHeaderView: NSView {
+        override var mouseDownCanMoveWindow: Bool { true }
+        override func mouseDown(with event: NSEvent) {
+            window?.performDrag(with: event)
+        }
     }
 }
 
